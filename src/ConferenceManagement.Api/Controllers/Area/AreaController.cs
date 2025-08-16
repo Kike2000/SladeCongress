@@ -2,11 +2,19 @@
 
 namespace ConferenceManagement.Api.Controllers.Area
 {
-    public class AreaController : Controller
+    [ApiController]
+    [Route("api/[controller]")]
+    public class AreaController : ControllerBase
     {
-        public IActionResult Index()
+        public AreaController()
         {
-            return View();
+
+        }
+
+        [HttpGet]
+        public IActionResult GetAreaById(Guid publicId)
+        {
+            return Ok();
         }
     }
 }
