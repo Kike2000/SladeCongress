@@ -1,6 +1,6 @@
-﻿using ConferenceManagement.Data.Persistance;
-using ConferenceManagement.Data.Repositories;
-using ConferenceManagement.Domain.Conference.Interfaces;
+﻿using ConferenceManagement.Domain.Conference.Interfaces;
+using ConferenceManagement.Infrastructure.Persistance.Repositories;
+using ConferenceManagement.Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,9 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConferenceManagement.Data.Extensions
+namespace ConferenceManagement.Infrastructure
 {
-    public static class ServiceCollectionExtensions
+    public static class DependencyInjection
     {
         public static IServiceCollection AddInfrastructure(
             this IServiceCollection services,
@@ -21,8 +21,6 @@ namespace ConferenceManagement.Data.Extensions
         {
             services.AddDbContext<AppDbContext>(options =>
                  options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
-
-            services.AddScoped<IConferenceRepository, ConferenceRepository>();
 
             return services;
         }

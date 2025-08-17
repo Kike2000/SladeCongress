@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConferenceManagement.Data.Repositories
+namespace ConferenceManagement.Application.Conference.Commands
 {
-    public class AreaRepository
+    public class CreateConferenceCommand
     {
     }
 }

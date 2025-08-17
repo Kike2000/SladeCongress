@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConferenceManagement.Data.Repositories
+namespace ConferenceManagement.Infrastructure.Persistance.Repositories
 {
     public class ConferenceRepository : IConferenceRepository
     {

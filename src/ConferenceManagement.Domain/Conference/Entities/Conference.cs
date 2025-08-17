@@ -8,8 +8,9 @@ namespace ConferenceManagement.Domain.Conference.Entities
 {
     public class Conference
     {
-        public int Id { get; private set; }
+        public int ConferenceId { get; private set; }
         public Guid PublicId { get; private set; }
+        public string Title { get; private set; }
         public DateTimeOffset StartDate { get; private set; }
         public DateTimeOffset EndDate { get; private set; }
         
@@ -17,11 +18,12 @@ namespace ConferenceManagement.Domain.Conference.Entities
         {            
         }
 
-        public Conference(Guid publicId, DateTimeOffset startDate, DateTimeOffset endDate)
+        public Conference(Guid publicId, DateTimeOffset startDate, DateTimeOffset endDate, string name)
         {
             PublicId = publicId;
             StartDate = startDate;
             EndDate = endDate;
+            Title = name;
         }
     }
 }

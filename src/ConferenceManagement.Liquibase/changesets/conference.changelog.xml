@@ -1,0 +1,28 @@
+﻿<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet id="1" author="ecarrillo">
+		<createTable tableName="Conference">
+			<column name="ConferenceID" type="INT">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="PublicId" type="uniqueidentifier">
+				<constraints nullable="false"/>
+			</column>
+			<column name="Title" type="VARCHAR(80)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="StartDate" type="datetimeoffset" />
+			<column name="EndDate" type="datetimeoffset" />
+		</createTable>
+	</changeSet>
+	
+	<changeSet id="2" author="ecarrillo">
+		<createIndex indexName="index_confenceTitle" tableName="Conference">
+			<column name="Title" />
+		</createIndex>
+	</changeSet>
+</databaseChangeLog>

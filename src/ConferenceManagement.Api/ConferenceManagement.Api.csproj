@@ -14,4 +14,8 @@
     <Folder Include="Extensions\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ConferenceManagement.Infrastructure\ConferenceManagement.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
