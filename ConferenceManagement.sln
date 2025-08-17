@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferenceManagement.Common
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferenceManagement.Domain", "src\ConferenceManagement.Domain\ConferenceManagement.Domain.csproj", "{FBB97B82-56C4-47B9-AE13-DFC60B291ACC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferenceManagement.Data", "src\ConferenceManagement.Data\ConferenceManagement.Data.csproj", "{185FB11D-2977-46A9-9681-DCC856F32331}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +35,15 @@ Global
 		{FBB97B82-56C4-47B9-AE13-DFC60B291ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBB97B82-56C4-47B9-AE13-DFC60B291ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBB97B82-56C4-47B9-AE13-DFC60B291ACC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{185FB11D-2977-46A9-9681-DCC856F32331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{185FB11D-2977-46A9-9681-DCC856F32331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{185FB11D-2977-46A9-9681-DCC856F32331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{185FB11D-2977-46A9-9681-DCC856F32331}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E21E78DB-373B-48F2-A3A0-1312D336D203}
 	EndGlobalSection
 EndGlobal

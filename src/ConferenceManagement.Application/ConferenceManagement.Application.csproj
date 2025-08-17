@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Area\Commands\" />
+    <Folder Include="Area\Handlers\" />
+    <Folder Include="Area\Queries\" />
+    <Folder Include="Area\Validators\" />
+    <Folder Include="Conference\Commands\" />
+    <Folder Include="Conference\Handlers\" />
+    <Folder Include="Conference\Validators\" />
+    <Folder Include="Conference\Queries\" />
+  </ItemGroup>
+
 </Project>

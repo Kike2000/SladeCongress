@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConferenceManagement.Data.Repositories
 {
-    internal class AreaRepository
+    public class AreaRepository
     {
     }
 }

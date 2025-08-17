@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Area\Entities\" />
+    <Folder Include="Area\Interfaces\" />
+    <Folder Include="Area\ValueObjects\" />
+    <Folder Include="Conference\ValueObjects\" />
+  </ItemGroup>
+
 </Project>
