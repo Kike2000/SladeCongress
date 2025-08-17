@@ -1,4 +1,4 @@
-﻿using ConferenceManagement.Domain.Conference.Entities;
+﻿using ConferenceManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

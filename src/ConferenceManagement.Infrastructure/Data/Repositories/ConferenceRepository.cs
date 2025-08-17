@@ -1,5 +1,6 @@
-﻿using ConferenceManagement.Domain.Conference.Entities;
-using ConferenceManagement.Domain.Conference.Interfaces;
+﻿using ConferenceManagement.Domain.Entities;
+using ConferenceManagement.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,16 @@ namespace ConferenceManagement.Infrastructure.Persistance.Repositories
 {
     public class ConferenceRepository : IConferenceRepository
     {
-        public Task<Conference> GetByIdAsync(Guid publicId)
+        private readonly AppDbContext _context;
+
+        public ConferenceRepository(AppDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+
+        public async Task<Conference?> GetByIdAsync(int id)
+        {
+            return await _context.Conferences.FindAsync(id);
         }
     }
 }

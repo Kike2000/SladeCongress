@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ConferenceManagement.Domain.Interfaces;
+using ConferenceManagement.Domain.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConferenceManagement.Api.Controllers.Conference
@@ -7,11 +9,18 @@ namespace ConferenceManagement.Api.Controllers.Conference
     [Route("api/[controller]")]
     public class ConferenceController : ControllerBase
     {
-
-        [HttpGet]
-        public IActionResult GetAllConferences()
+        private readonly IConferenceService _conferenceService;
+        public ConferenceController(IConferenceService conferenceService)
         {
-            return Ok();
+            _conferenceService = conferenceService;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ConferenceManagement.Domain.Entities.Conference>> GetById([FromRoute]int id)
+        {
+            var conference = await _conferenceService.GetConferenceByIdAsync(id);
+            if (conference == null) return NotFound();
+            return Ok(conference);
         }
     }
 }

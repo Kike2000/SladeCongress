@@ -1,11 +1,6 @@
-﻿using ConferenceManagement.Domain.Conference.Entities;
+﻿using ConferenceManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConferenceManagement.Infrastructure.Data.Configurations
 {
@@ -13,9 +8,17 @@ namespace ConferenceManagement.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Conference> builder)
         {
-            builder.ToTable("Conference");
+            builder.ToTable("Conference", "dbo");
 
-            builder.HasKey(x => x.ConferenceId);
+            builder.Property(c => c.ConferenceId)
+                .HasColumnName("ConferenceID");
+
+            builder.Property(c => c.PublicId)
+                .IsRequired();
+
+            builder.Property(c => c.Title)
+                .HasMaxLength(80)
+                .IsRequired();
 
             builder.Property(c => c.StartDate)
                 .HasColumnType("datetimeoffset");

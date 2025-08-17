@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ConferenceManagement.Domain\ConferenceManagement.Domain.csproj" />
     <ProjectReference Include="..\ConferenceManagement.Infrastructure\ConferenceManagement.Infrastructure.csproj" />
   </ItemGroup>
 

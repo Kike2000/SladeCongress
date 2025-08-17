@@ -1,14 +1,10 @@
-﻿using ConferenceManagement.Domain.Conference.Interfaces;
-using ConferenceManagement.Infrastructure.Persistance.Repositories;
+﻿using ConferenceManagement.Domain.Interfaces;
+using ConferenceManagement.Domain.Services;
 using ConferenceManagement.Infrastructure.Persistance;
+using ConferenceManagement.Infrastructure.Persistance.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConferenceManagement.Infrastructure
 {
@@ -21,6 +17,10 @@ namespace ConferenceManagement.Infrastructure
         {
             services.AddDbContext<AppDbContext>(options =>
                  options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IConferenceRepository, ConferenceRepository>();
+            services.AddScoped<IConferenceService, ConferenceService>();
+
 
             return services;
         }
