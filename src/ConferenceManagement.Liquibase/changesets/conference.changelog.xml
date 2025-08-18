@@ -6,7 +6,7 @@
 
 	<changeSet id="1" author="ecarrillo">
 		<createTable tableName="Conference">
-			<column name="ConferenceID" type="INT">
+			<column name="ConferenceID" type="INT" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false"/>
 			</column>
 			<column name="PublicId" type="uniqueidentifier">

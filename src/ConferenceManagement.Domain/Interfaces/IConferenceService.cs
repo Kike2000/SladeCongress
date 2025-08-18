@@ -1,4 +1,5 @@
-﻿using ConferenceManagement.Domain.Entities;
+﻿using ConferenceManagement.Domain.DTOs;
+using ConferenceManagement.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,11 @@ namespace ConferenceManagement.Domain.Interfaces
 {
     public interface IConferenceService
     {
-        Task<Conference?> GetConferenceByIdAsync(int id);
+        Task<Conference?> GetConferenceByPublicIdAsync(Guid publicId);
+
+        Task<List<Conference>?> GetAllConferencesAsync();
+
+        Task<bool> CreateConferenceAsync(ConferenceDto conferenceDto);
+
     }
 }

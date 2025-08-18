@@ -18,9 +18,25 @@ namespace ConferenceManagement.Infrastructure.Persistance.Repositories
             _context = context;
         }
 
-        public async Task<Conference?> GetByIdAsync(int id)
+        public async Task<Conference?> GetByPublicIdAsync(Guid id)
         {
             return await _context.Conferences.FindAsync(id);
         }
+
+        public IQueryable<Conference>? GetAllAsync()
+        {
+            return  _context.Conferences;
+        }
+
+        public async Task CreateAsync(Conference conference)
+        {
+            await _context.Conferences.AddAsync(conference);
+        }
+
+        public async Task<bool> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync() > 0;
+        }
+
     }
 }

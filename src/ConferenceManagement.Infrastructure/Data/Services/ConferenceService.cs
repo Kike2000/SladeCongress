@@ -1,10 +1,7 @@
-﻿using ConferenceManagement.Domain.Entities;
+﻿using ConferenceManagement.Domain.DTOs;
+using ConferenceManagement.Domain.Entities;
 using ConferenceManagement.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConferenceManagement.Domain.Services
 {
@@ -17,9 +14,36 @@ namespace ConferenceManagement.Domain.Services
             _conferenceRepository = conferenceRepository;
         }
 
-        public Task<Conference?> GetConferenceByIdAsync(int id)
+        public async Task<Conference?> GetConferenceByPublicIdAsync(Guid id)
         {
-            return _conferenceRepository.GetByIdAsync(id);
+            return await _conferenceRepository.GetByPublicIdAsync(id);
+        }
+
+        public async Task<List<Conference>?> GetAllConferencesAsync()
+        {
+            var conferences = _conferenceRepository.GetAllAsync();
+            var filtered = conferences.Where(c => c.StartDate > DateTimeOffset.Now);
+
+            return await filtered.ToListAsync();
+        }
+
+        public async Task<bool> CreateConferenceAsync(ConferenceDto conferenceDto)
+        {
+            if(conferenceDto.StartDate > conferenceDto.EndDate)
+            {
+                return false;
+            }
+
+            var conference = new Conference
+            {
+                PublicId = Guid.NewGuid(),
+                StartDate = conferenceDto.StartDate,
+                EndDate = conferenceDto.EndDate,
+                Title = conferenceDto.Title,
+            };
+
+            await _conferenceRepository.CreateAsync(conference);
+            return await _conferenceRepository.SaveChangesAsync();
         }
     }
 }

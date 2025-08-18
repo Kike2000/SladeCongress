@@ -1,6 +1,6 @@
-﻿using ConferenceManagement.Domain.Interfaces;
-using ConferenceManagement.Domain.Services;
-using Microsoft.AspNetCore.Http;
+﻿using ConferenceManagement.Api.Extensions;
+using ConferenceManagement.Domain.DTOs;
+using ConferenceManagement.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConferenceManagement.Api.Controllers.Conference
@@ -16,11 +16,31 @@ namespace ConferenceManagement.Api.Controllers.Conference
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ConferenceManagement.Domain.Entities.Conference>> GetById([FromRoute]int id)
+        public async Task<ActionResult<ConferenceDto>> GetById(
+            [FromRoute] Guid id)
         {
-            var conference = await _conferenceService.GetConferenceByIdAsync(id);
-            if (conference == null) return NotFound();
-            return Ok(conference);
+            var conference = await _conferenceService.GetConferenceByPublicIdAsync(id);
+            if (conference == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(conference.ToConferenceDto());
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ConferenceDto>>> GetAllConferences()
+        {
+            var conferences = await _conferenceService.GetAllConferencesAsync();
+            var response = conferences.ToResponseList();
+
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<bool> CreateConference([FromBody] ConferenceDto conferenceDto)
+        {
+            return await _conferenceService.CreateConferenceAsync(conferenceDto);
         }
     }
 }
